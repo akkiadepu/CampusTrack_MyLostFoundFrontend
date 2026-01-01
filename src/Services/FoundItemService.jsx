@@ -49,3 +49,11 @@ export const getFoundItemsByUsername = () => {
         withCredentials: true
     });
 }
+
+export const getFoundItemByLostItem = (id) => {
+    return axios.get(`${ID_URL}/${id}`, {
+        withCredentials: true
+    });
+
+}
+
