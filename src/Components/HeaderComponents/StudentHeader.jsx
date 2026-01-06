@@ -32,6 +32,7 @@ const StudentHeader = () => {
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/StudentMenu">Home</a></li>
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/StudentProfile">Student Profile</a></li>
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/chat-msg">Chatting</a></li>
+              
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/found-entry">Found Item Form Submission</a></li>
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/found-report">Found Item Report</a></li>
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/lost-entry">Lost Item Form Submission</a></li>
