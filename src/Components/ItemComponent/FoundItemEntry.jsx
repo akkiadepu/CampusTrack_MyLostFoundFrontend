@@ -52,13 +52,125 @@ const FoundItemEntry = () => {
         setFoundItem(values => ({ ...values, [name]: value }));
     };
 
-    const foundItemSubmit = (event) => {
-        event.preventDefault(); foundItem.foundItemId = newId; foundItem.username = userId; foundItem.lostDate = fdate;
-        saveFoundItem(foundItem).then(response => {
-            alert("found Item Form Submitted Successfully....");
-            navigate('/StudentMenu');
-        });
-    }
+    // const foundItemSubmit = (event) => {
+    //     event.preventDefault(); 
+    //     foundItem.foundItemId = newId; foundItem.username = userId; foundItem.lostDate = fdate;
+
+    //     saveFoundItem(foundItem).then(response => {
+    //         alert("found Item Form Submitted Successfully....");
+    //         navigate('/StudentMenu');
+    //     });
+    // }
+
+
+//     const foundItemSubmit = async (event) => {
+//   event.preventDefault();
+
+//   // 🔥 ALWAYS GET A FRESH ID BEFORE SAVE
+//   const idRes = await generateId();
+//   const freshId = idRes.data;
+
+//   const payload = {
+//     ...foundItem,
+//     foundItemId: freshId,
+//     username: userId,
+//     foundDate: fdate,
+//     status: false
+//   };
+
+//   saveFoundItem(payload).then(() => {
+//     alert("Found Item Form Submitted Successfully ✅");
+
+//     // Reset form
+//     setFoundItem({
+//       foundItemId: "",
+//       foundItemName: "",
+//       color: "",
+//       brand: "",
+//       category: "",
+//       location: "",
+//       username: "",
+//       foundDate: new Date(),
+//       status: false
+//     });
+
+//     navigate("/StudentMenu");
+//   });
+// };
+
+// const foundItemSubmit = async (event) => {
+//   event.preventDefault();
+
+//   // 🔥 Get fresh ID
+//   const idRes = await generateId();
+//   const freshId = idRes.data;
+
+//   // 🔥 Get the logged-in username from localStorage
+//   const username = localStorage.getItem("username"); // set this at login
+
+//   // 🔥 Build payload
+//  const payload = {
+//   ...foundItem,
+//   foundItemId: freshId,
+//   username: localStorage.getItem("username"),
+//   foundDate: fdate,
+//   status: false
+// };
+
+// saveFoundItem(payload)
+//     .then(() => {
+//       alert("Found Item Form Submitted Successfully ✅");
+
+//       // Reset form
+//       setFoundItem({
+//         foundItemId: "",
+//         foundItemName: "",
+//         color: "",
+//         brand: "",
+//         category: "",
+//         location: "",
+//         username: "",
+//         foundDate: new Date(),
+//         status: false
+//       });
+
+//       navigate("/StudentMenu");
+//     })
+//     .catch(err => {
+//       console.error("Error saving item", err);
+//     });
+// };
+
+const foundItemSubmit = async (event) => {
+  event.preventDefault();
+
+  const idRes = await generateId();
+  const freshId = idRes.data;
+
+  const storedUsername = sessionStorage.getItem("username");
+console.log("USERNAME SENT 👉", storedUsername);
+
+  const payload = {
+    foundItemId: freshId,
+    foundItemName: foundItem.foundItemName,
+    color: foundItem.color,
+    brand: foundItem.brand,
+    category: foundItem.category,
+    location: foundItem.location,
+    username: storedUsername,   // 🔥 MUST BE HERE
+    foundDate: fdate,
+    status: false
+  };
+
+  saveFoundItem(payload)
+    .then(() => {
+      alert("Found Item Submitted ✅");
+      navigate("/StudentMenu");
+    })
+    .catch(err => console.error(err));
+};
+
+
 
     const handleValidation = (event) => {
         event.preventDefault(); 
@@ -117,12 +229,12 @@ const FoundItemEntry = () => {
             borderRadius: "12px",
           }}
         >
-          <form>
+          <form >
             {/* Lost Item ID */}
             <div className="mb-3">
               <label className="form-label fw-bold">Found Item ID :</label>
               <input
-                name="itemId"
+                name="foundItemId"
                 className="form-control"
                 value={newId}
                 readOnly

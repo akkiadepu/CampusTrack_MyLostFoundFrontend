@@ -45,16 +45,45 @@ const LostItemEntry = () => {
     setLostItem(values => ({ ...values, [name]: value }));
   };
 
-  const lostItemSubmit = (event) => {
+  // const lostItemSubmit = (event) => {
+  //   event.preventDefault();
+  //   lostItem.lostItemId = newId;
+  //   lostItem.username = userId;
+  //   lostItem.lostDate = ldate;
+  //   saveLostItem(lostItem).then(response => { 
+  //     alert("Lost Item Form Submitted Successfully...."); 
+  //     navigate('/StudentMenu'); 
+  //   });
+  // }
+
+  const lostItemSubmit = async (event) => {
     event.preventDefault();
-    lostItem.lostItemId = newId;
-    lostItem.username = userId;
-    lostItem.lostDate = ldate;
-    saveLostItem(lostItem).then(response => { 
-      alert("Lost Item Form Submitted Successfully...."); 
-      navigate('/StudentMenu'); 
-    });
-  }
+  
+    const idRes = await generateId();
+    const freshId = idRes.data;
+  
+    const storedUsername = sessionStorage.getItem("username");
+  console.log("USERNAME SENT 👉", storedUsername);
+  
+    const payload = {
+      lostItemId: freshId,
+      lostItemName: lostItem.lostItemName,
+      color: lostItem.color,
+      brand: lostItem.brand,
+      category: lostItem.category,
+      location: lostItem.location,
+      username: storedUsername,   // 🔥 MUST BE HERE
+      foundDate: ldate,
+      status: false
+    };
+  
+    saveLostItem(payload)
+      .then(() => {
+        alert("lost Item Submitted ✅");
+        navigate("/StudentMenu");
+      })
+      .catch(err => console.error(err));
+  };
 
    const handleValidation = (event) => {
     event.preventDefault();
@@ -129,7 +158,7 @@ const LostItemEntry = () => {
             <div className="mb-3">
               <label className="form-label fw-bold">Lost Item ID :</label>
               <input
-                name="itemId"
+                name="lostItemId"
                 className="form-control"
                 value={newId}
                 readOnly

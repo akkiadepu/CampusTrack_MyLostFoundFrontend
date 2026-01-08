@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { Await } from 'react-router-dom';
 
 const REGISTER_URL = 'http://localhost:5000/lostfound/register'
 const LOGIN_URL = 'http://localhost:5000/lostfound/login'
@@ -15,7 +16,7 @@ export const registerNewUser = (user) => {
 };
 
 export const validateUser = (userId, password) => {
-    return axios.get(`${LOGIN_URL}/${userId}/${password}`, { withCredentials: true });
+     return axios.get(`${LOGIN_URL}/${userId}/${password}`, { withCredentials: true });   
 };
 
 export const getUserDetails = () => {

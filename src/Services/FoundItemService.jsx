@@ -4,12 +4,20 @@ import axios from 'axios';
 const FOUND_URL = 'http://localhost:5000/lostfound/found';
 const ID_URL = 'http://localhost:5000/lostfound/found-id';
 const USR_URL = 'http://localhost:5000/lostfound/found-user';
+const U_URL = "http://localhost:5000/lostfound/found/user";
 
 export const saveFoundItem = (foundItem) => {
     return axios.post(FOUND_URL, foundItem, {
         withCredentials: true
     });
 };
+
+// export const saveFoundItem = (foundItem, username) => {
+//     return axios.post(`${FOUND_URL}?username=${username}`, foundItem, {
+//         withCredentials: true
+//     });
+// };
+
 
 export const getAllFoundItems = () => {
     return axios.get(FOUND_URL,
@@ -44,11 +52,20 @@ export const generateId = () => {
     });
 }
 
+// export const getFoundItemsByUsername = () => {
+//     return axios.get(USR_URL, {
+//         withCredentials: true
+//     });
+// }
+
 export const getFoundItemsByUsername = () => {
-    return axios.get(USR_URL, {
+    const username = sessionStorage.getItem("username");
+
+    return axios.get(`${U_URL}/${username}`, {
         withCredentials: true
     });
-}
+};
+
 
 export const getFoundItemByLostItem = (id) => {
     return axios.get(`${ID_URL}/${id}`, {

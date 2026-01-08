@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   getAllLostItems,
   getLostItemsByUsername,
-  
+
 } from "../../Services/LostItemService";
 import { getRole } from "../../Services/LoginService";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,7 +14,7 @@ import StudentHeader from "../HeaderComponents/StudentHeader";
 
 const LostItemReport = () => {
 
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   const [itemList, setItemList] = useState([]);
   const [role, setRole] = useState("");
 
@@ -37,7 +37,7 @@ const LostItemReport = () => {
     }
   };
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await getRole();
@@ -57,23 +57,23 @@ const LostItemReport = () => {
     fetchData();
   }, []);
 
-   const returnBack = () => {
+  const returnBack = () => {
     if (role === "Admin") navigate("/AdminMenu");
     else if (role === "Student") navigate("/StudentMenu");
   };
 
   return (
-     <div
+    <div
       className=""
       style={{
         background: "linear-gradient(to right, #fde7e7, #e9ffd9)",
-        minWidth:"99vw",
-        minHeight:"100vh"
+        minWidth: "99vw",
+        minHeight: "100vh"
 
       }}
     >
       {/* TOP GAP */}
-      {role === "Admin" ? <AdminHeader/> : <StudentHeader/>}
+      {role === "Admin" ? <AdminHeader /> : <StudentHeader />}
 
       <div className="container text-center">
 
@@ -116,6 +116,9 @@ const LostItemReport = () => {
                     <strong>Lost Item ID:</strong> {item.lostItemId}
                   </small>
                   <small className="d-block">
+                    <strong>Lost Item name:</strong> {item.lostItemName}
+                  </small>
+                  <small className="d-block">
                     <strong>Category:</strong> {item.category}
                   </small>
                   <small className="d-block">
@@ -136,11 +139,26 @@ const LostItemReport = () => {
                   </small>
                 </div>
 
+                {/* <div className="text-end mt-3">
+                  <button className="btn btn-primary btn-sm px-3">
+                    Contact
+                  </button>
+                </div> */}
+
                 <div className="text-end mt-3">
+                  <button
+                    className="btn btn-warning btn-sm me-2"
+                    onClick={() => navigate(`/match-search/${item.lostItemId}`)}
+                  >
+                    Search
+                  </button>
+
                   <button className="btn btn-primary btn-sm px-3">
                     Contact
                   </button>
                 </div>
+
+
               </div>
             </div>
           ))}
@@ -153,7 +171,7 @@ const LostItemReport = () => {
 
       </div>
 
-     <Footer/>
+      <Footer />
     </div>
 
   )

@@ -120,6 +120,9 @@ const FoundItemReport = () => {
                                         <strong>Found Item ID:</strong> {item.foundItemId}
                                     </small>
                                     <small className="d-block">
+                                        <strong>Found Item name:</strong> {item.foundItemName}
+                                    </small>
+                                    <small className="d-block">
                                         <strong>Category:</strong> {item.category}
                                     </small>
                                     <small className="d-block">

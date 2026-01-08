@@ -4,6 +4,7 @@ import axios from 'axios';
 const LOST_URL = 'http://localhost:5000/lostfound/lost';
 const ID_URL = 'http://localhost:5000/lostfound/lost-id';
 const USR_URL = 'http://localhost:5000/lostfound/lost-user';
+const U_URL = "http://localhost:5000/lostfound/lost/user";
 
 
 export const saveLostItem = (lostItem) => { 
@@ -42,10 +43,18 @@ export const generateId=()=> {
     ); 
 }
 
+// export const getLostItemsByUsername=()=>{ 
+//     return axios.get(USR_URL, 
+//         { withCredentials: true }
+//     ); 
+// }
+
 export const getLostItemsByUsername=()=>{ 
-    return axios.get(USR_URL, 
-        { withCredentials: true }
-    ); 
-}
+ const username = sessionStorage.getItem("username");
+
+    return axios.get(`${U_URL}/${username}`, {
+        withCredentials: true
+    });
+};
 
 

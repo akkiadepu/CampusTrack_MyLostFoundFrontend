@@ -14,6 +14,7 @@ import FoundItemReport from './Components/ItemComponent/FoundItemReport';
 import StudentList from './Components/LoginComponent/StudentList';
 import StudentProfile from './Components/LoginComponent/StudentProfile';
 import ChatMessage from './Components/MessageComponent/ChatMessage';
+import MatchItemSearch from './Components/ItemComponent/MatchItemSearch';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
            <Route path='/found-entry' element={<FoundItemEntry/>}/>
           <Route path='/found-report' element={<FoundItemReport/>}/>
            <Route path='/chat-msg' element={<ChatMessage/>}/>
+           <Route path="/match-search/:pid" element={<MatchItemSearch />} />
         </Routes>
        </BrowserRouter>
      

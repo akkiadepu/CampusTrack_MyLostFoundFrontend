@@ -29,6 +29,7 @@ const LoginPage = () => {
       setWrongPassword("");
 
       sessionStorage.setItem("username", loginData.username);
+      console.log(loginData.username);
       sessionStorage.setItem("role", role);
 
       if (role === "Admin") {
