@@ -93,23 +93,23 @@ const StudentProfile = () => {
             />
 
 
-            <table className="table table-bordered bg-transparent">
-                <thead>
+            <table className="table table-borderless bg-transparent">
+                <thead className="bg-transparent">
                     <tr>
-                        <th>Username</th>
-                        <th>Personal Name</th>
-                        <th>Email</th>
-                        <th>Actions</th>
+                        <th className="bg-transparent">Username</th>
+                        <th className="bg-transparent">Personal Name</th>
+                        <th className="bg-transparent">Email</th>
+                        <th className="bg-transparent">Actions</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody className="bg-transparent">
                     {studentList.map(student => (
                         <tr key={student.username}>
 
-                            <td>{student.username}</td>
+                            <td className="bg-transparent">{student.username}</td>
 
-                            <td>
+                            <td className="bg-transparent">
                                 {editUsername === student.username ? (
                                     <input
                                         name="personalName"
@@ -120,7 +120,7 @@ const StudentProfile = () => {
                                 ) : student.personalName}
                             </td>
 
-                            <td>
+                            <td className="bg-transparent">
                                 {editUsername === student.username ? (
                                     <input
                                         name="email"
@@ -131,7 +131,7 @@ const StudentProfile = () => {
                                 ) : student.email}
                             </td>
 
-                            <td>
+                            <td className="bg-transparent">
                                 {editUsername === student.username ? (
                                     <>
                                         <input
