@@ -17,6 +17,13 @@ export const getAllMatchItem=()=>{
     ); 
 }
 
+export const getMatchedFoundItems = (lostItemId) => {
+  return axios.get(`http://localhost:5000/lostfound/found-id/${lostItemId}`, {
+    withCredentials: true
+  });
+};
+
+
 
 
 

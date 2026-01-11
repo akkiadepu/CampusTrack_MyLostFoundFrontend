@@ -25,6 +25,16 @@ const FoundItemReport = () => {
         }
     };
 
+    // const showStudentFoundItems = async () => {
+    //     try {
+    //         const res = await getActiveFoundItemsByUser();
+    //         setItemList(res.data);
+    //     } catch (err) {
+    //         console.error("Error fetching student active found items", err);
+    //     }
+    // };
+
+
     // Fetch USER items
     const showFoundItems = async () => {
         try {
@@ -44,8 +54,9 @@ const FoundItemReport = () => {
 
                 if (userRole === "Admin") {
                     await showAllFoundItems();
-                } else {
+                } else if (userRole === "Student") {
                     await showFoundItems();
+                    // await showStudentFoundItems();
                 }
             } catch (error) {
                 console.error("Error fetching role", error);
@@ -138,15 +149,29 @@ const FoundItemReport = () => {
                                         <strong>User:</strong> {item.username}
                                     </small>
                                     <small className="d-block">
+                                        {/* <strong>Status:</strong>{" "}
+                                        {item.status ? "Found" : "Not Found"} */}
                                         <strong>Status:</strong>{" "}
-                                        {item.status ? "Found" : "Not Found"}
+                                        {item.status ? "Returned" : "Not Returned"}
                                     </small>
                                 </div>
 
                                 <div className="text-end mt-3">
-                                    <button className="btn btn-primary btn-sm px-3">
+                                    {/* <button className="btn btn-primary btn-sm px-3">
                                         Contact
-                                    </button>
+                                    </button> */}
+
+                                    {role === "Student" && (
+                                        <>
+                                            <button className="btn btn-primary btn-sm px-3"
+                                             onClick={() => navigate(`/chat-msg`)}
+                                            >
+                                                Contact
+                                            </button>
+                                        </>
+                                    )}
+
+
                                 </div>
                             </div>
                         </div>

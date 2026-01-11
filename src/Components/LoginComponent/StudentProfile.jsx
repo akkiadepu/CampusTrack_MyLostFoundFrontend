@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom';
 import { getStudentsByUserName, deleteUser, updateStudent } from "../../Services/LoginService";
+import StudentHeader from '../HeaderComponents/StudentHeader';
 
 const StudentProfile = () => {
 
@@ -73,10 +74,26 @@ const StudentProfile = () => {
     }
 
     return (
-        <div className="text-center">
-            <h2>Student Profile</h2>
+        <div className="text-center" style={{
+            background: "linear-gradient(to right, #fde7e7, #e9ffd9)",
+            minWidth: "99vw",
+            minHeight: "100vh",
 
-            <table className="table table-bordered">
+        }} >
+            <StudentHeader />
+
+            <h2 className="mt-3">Student Profile</h2>
+
+            <hr
+                style={{
+                    height: "3px",
+                    borderWidth: 0,
+                    backgroundColor: "red",
+                }}
+            />
+
+
+            <table className="table table-bordered bg-transparent">
                 <thead>
                     <tr>
                         <th>Username</th>

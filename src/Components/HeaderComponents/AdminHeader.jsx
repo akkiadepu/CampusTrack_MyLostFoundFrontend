@@ -31,12 +31,11 @@ const AdminHeader = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/">Home</a></li>
-              <li className="nav-item mx-2"><a className="nav-link" href="/StudentList">Student list</a></li>
-               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/chat-msg">Chatting</a></li>
+              <li className="nav-item mx-2"><a className="nav-link text-dark" href="/StudentList">Student list</a></li>
+               {/* <li className="nav-item mx-2"><a className="nav-link text-dark" href="/chat-msg">Chatting</a></li> */}
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/found-report">Found Item Report</a></li>
-
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/lost-report">Lost Item Report</a></li>
-              <li className="nav-item mx-2"><a className="nav-link text-dark" href="/">Match Item Report</a></li>
+              <li className="nav-item mx-2"><a className="nav-link text-dark" href="/match-report">Match Item Report</a></li>
               {/* <li className="nav-item mx-2"><a className="nav-link" href="#">Profile</a></li> */} 
             </ul>
             <button className="btn btn-outline-dark ms-3" onClick={handleLogout}>Log Out</button>

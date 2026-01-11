@@ -6,6 +6,7 @@ import {
   getLostItemsByUsername,
 
 } from "../../Services/LostItemService";
+
 import { getRole } from "../../Services/LoginService";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../HeaderComponents/Footer";
@@ -21,7 +22,8 @@ const LostItemReport = () => {
   const showAllLostItems = async () => {
     try {
       const res = await getAllLostItems();
-      setItemList(res.data);
+      // setItemList(res.data);
+      setItemList(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching all items", err);
     }
@@ -31,7 +33,7 @@ const LostItemReport = () => {
   const showLostItems = async () => {
     try {
       const res = await getLostItemsByUsername();
-      setItemList(res.data);
+      setItemList(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Error fetching user items", err);
     }
@@ -41,14 +43,15 @@ const LostItemReport = () => {
     const fetchData = async () => {
       try {
         const res = await getRole();
-        const userRole = res.data;
-        setRole(userRole);
+        const cleanRole = res.data?.replace("ROLE_", "");
+        setRole(cleanRole);
 
-        if (userRole === "Admin") {
+        if (cleanRole === "Admin") {
           await showAllLostItems();
-        } else {
+        } else if (cleanRole === "Student") {
           await showLostItems();
         }
+
       } catch (error) {
         console.error("Error fetching role", error);
       }
@@ -64,6 +67,7 @@ const LostItemReport = () => {
 
   return (
     <div
+
       className=""
       style={{
         background: "linear-gradient(to right, #fde7e7, #e9ffd9)",
@@ -92,7 +96,9 @@ const LostItemReport = () => {
 
         {/* CARD GRID */}
         <div className="row g-4 mt-4">
-          {itemList.map((item) => (
+          {/* {itemList.map((item) => ( */}
+          {Array.isArray(itemList) && itemList.map((item) => (
+
             <div
               key={item.lostItemId}
               className="col-12 col-sm-6 col-md-4 col-lg-3"
@@ -146,16 +152,44 @@ const LostItemReport = () => {
                 </div> */}
 
                 <div className="text-end mt-3">
-                  <button
+                  {/* <button
                     className="btn btn-warning btn-sm me-2"
                     onClick={() => navigate(`/match-search/${item.lostItemId}`)}
                   >
                     Search
-                  </button>
+                  </button> */}
+                  {/* {!item.status && (
+                    <button
+                      className="btn btn-warning btn-sm me-2"
+                      onClick={() => navigate(`/match-search/${item.lostItemId}`)}
+                    >
+                      Search
+                    </button>
+                  )}
 
                   <button className="btn btn-primary btn-sm px-3">
                     Contact
-                  </button>
+                  </button> */}
+
+                  {role === "Student" && (
+                    <>
+                      {!item.status && (
+                        <button
+                          className="btn btn-warning btn-sm me-2"
+                          onClick={() => navigate(`/match-search/${item.lostItemId}`)}
+                        >
+                          Search
+                        </button>
+                      )}
+
+                      <button className="btn btn-primary btn-sm px-3"
+                         onClick={() => navigate(`/chat-msg`)}
+                      >
+                        Contact
+                      </button>
+                    </>
+                  )}
+
                 </div>
 
 
