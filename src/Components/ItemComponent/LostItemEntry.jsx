@@ -27,6 +27,7 @@ const LostItemEntry = () => {
   const [newId, setNewId] = useState("");
   const [ldate, setLdate] = useState(new Date());
   const [userId, setUserId] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const setLostItemId = () => {
     generateId().then(response => {
@@ -64,7 +65,7 @@ const LostItemEntry = () => {
   
     const storedUsername = sessionStorage.getItem("username");
   console.log("USERNAME SENT 👉", storedUsername);
-  
+ 
     const payload = {
       lostItemId: freshId,
       lostItemName: lostItem.lostItemName,
@@ -73,13 +74,13 @@ const LostItemEntry = () => {
       category: lostItem.category,
       location: lostItem.location,
       username: storedUsername,   // 🔥 MUST BE HERE
-      foundDate: ldate,
+      lostDate: ldate,
       status: false
     };
   
     saveLostItem(payload)
       .then(() => {
-        alert("lost Item Submitted ✅");
+        // alert("lost Item Submitted ✅");
         navigate("/StudentMenu");
       })
       .catch(err => console.error(err));
@@ -112,7 +113,10 @@ const LostItemEntry = () => {
     setErrors(tempErrors);
     if (isValid) {
       lostItemSubmit(event);
+      setSuccessMessage("lost Item Submitted ✅... ");
 
+    }else {
+       setSuccessMessage("");
     }
   };
 
@@ -266,7 +270,11 @@ const LostItemEntry = () => {
               <div>
               {flag && <p style={{ color: "blue" }}>Lost Item Form Submitted..... <button className='btn btn-warning' onClick={nextItem}>New Form Submission</button></p>}
               </div> */}
-
+           {successMessage && (
+        <div className="alert alert-success mt-3 text-center">
+          {successMessage}
+        </div>
+      )}
 
         </div>
        <Footer/>

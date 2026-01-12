@@ -14,6 +14,7 @@ const RegisterUser = () => {
         role: "",
     });
 
+    const [successMessage, setSuccessMessage] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     let navigate = useNavigate();
     const [errors, setErrors] = useState({});
@@ -24,7 +25,7 @@ const RegisterUser = () => {
         event.preventDefault();
         if (lostFoundUser.password === confirmPassword) {
             registerNewUser(lostFoundUser).then((response) => {
-                alert("User is registered successfully...Go For Login");
+                // alert("User is registered successfully...Go For Login");
                 navigate('/');
             });
         }
@@ -85,6 +86,10 @@ const RegisterUser = () => {
         setErrors(tempErrors);
         if (isValid) {
             createNewUser(event);
+            setSuccessMessage("User is registered successfully... Go For Login");
+            // navigate('/');
+        } else {
+            setSuccessMessage("");
         }
     };
 
@@ -155,6 +160,12 @@ const RegisterUser = () => {
                                 </div>
 
                                 <button className="btn btn-dark w-100" onClick={handleValidation}>Submit</button>
+
+                                {successMessage && (
+                                    <div className="alert alert-success mt-3 text-center">
+                                        {successMessage}
+                                    </div>
+                                )}
 
                                 <p className="mt-2 text-center">
                                     Already have an account? <a href="/">login in</a>

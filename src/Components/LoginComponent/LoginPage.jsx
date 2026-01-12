@@ -33,13 +33,13 @@ const LoginPage = () => {
       sessionStorage.setItem("role", role);
 
       if (role === "Admin") {
-        alert("Admin");
+        // alert("Admin");
         navigate('/AdminMenu');
 
       }
       else if (role === "Student") {
 
-        alert("Student");
+        // alert("Student");
         navigate('/StudentMenu');
 
       }
