@@ -149,17 +149,14 @@ const FoundItemReport = () => {
                                         <strong>User:</strong> {item.username}
                                     </small>
                                     <small className="d-block">
-                                        {/* <strong>Status:</strong>{" "}
-                                        {item.status ? "Found" : "Not Found"} */}
+
                                         <strong>Status:</strong>{" "}
                                         {item.status ? "Returned" : "Not Returned"}
                                     </small>
                                 </div>
 
                                 <div className="text-end mt-3">
-                                    {/* <button className="btn btn-primary btn-sm px-3">
-                                        Contact
-                                    </button> */}
+                                    
 
                                     {role === "Student" && (
                                         <>

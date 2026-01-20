@@ -33,18 +33,17 @@ const LoginPage = () => {
       sessionStorage.setItem("role", role);
 
       if (role === "Admin") {
-        // alert("Admin");
+      
         navigate('/AdminMenu');
 
       }
       else if (role === "Student") {
 
-        // alert("Student");
         navigate('/StudentMenu');
 
       }
       else
-        // alert("Wrong Userid/Password");
+      
         if (loginData.username.trim() !== "") {
           setWrongUsername("Wrong Username");
         }

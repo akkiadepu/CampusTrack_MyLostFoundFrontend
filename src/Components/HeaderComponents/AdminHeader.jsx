@@ -30,7 +30,7 @@ const AdminHeader = () => {
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item mx-2"><a className="nav-link text-dark" href="/">Home</a></li>
+              <li className="nav-item mx-2"><a className="nav-link text-dark" href="/AdminMenu">Home</a></li>
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/StudentList">Student list</a></li>
                {/* <li className="nav-item mx-2"><a className="nav-link text-dark" href="/chat-msg">Chatting</a></li> */}
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/found-report">Found Item Report</a></li>

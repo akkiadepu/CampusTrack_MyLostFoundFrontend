@@ -61,14 +61,7 @@ const StudentProfile = () => {
         });
     };
 
-    // const removeStudent = (id) => {
-    //     deleteUser(id).then(response => {
-    //         let remainStudents = studentList.filter((student) => (student.username !== id));
-    //         setStudentList(remainStudents);
-    //         // navigate('/student-list');
-    //     });
-    // }
-
+  
     const returnBack = () => {
         navigate('/StudentMenu')
     }

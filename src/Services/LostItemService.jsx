@@ -5,7 +5,7 @@ const LOST_URL = 'http://localhost:5000/lostfound/lost';
 const ID_URL = 'http://localhost:5000/lostfound/lost-id';
 const USR_URL = 'http://localhost:5000/lostfound/lost-user';
 const U_URL = "http://localhost:5000/lostfound/lost/user";
-// const LOST_USER_ACTIVE_URL = 'http://localhost:5000/lostfound/lost/student/active';
+
 
 
 export const saveLostItem = (lostItem) => { 
@@ -19,12 +19,6 @@ export const getAllLostItems=()=> {
         { withCredentials: true }
     ); 
 }
-
-// export const getActiveLostItemsByUser = () => {
-//   return axios.get(LOST_USER_ACTIVE_URL, {
-//     withCredentials: true
-//   });
-// };
 
 
 export const getLostItemById=(id)=> { 
@@ -51,11 +45,6 @@ export const generateId=()=> {
     ); 
 }
 
-// export const getLostItemsByUsername=()=>{ 
-//     return axios.get(USR_URL, 
-//         { withCredentials: true }
-//     ); 
-// }
 
 export const getLostItemsByUsername=()=>{ 
  const username = sessionStorage.getItem("username");

@@ -37,7 +37,6 @@ const StudentHeader = () => {
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/found-report">Found Item Report</a></li>
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/lost-entry">Lost Item Form Submission</a></li>
               <li className="nav-item mx-2"><a className="nav-link text-dark" href="/lost-report">Lost Item Report</a></li>
-              {/* <li className="nav-item mx-2"><a className="nav-link" href="#">Profile</a></li> */}
             </ul>
             <button className="btn btn-outline-dark ms-3" onClick={handleLogout}>Log Out</button>
           </div>

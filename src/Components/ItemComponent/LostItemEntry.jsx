@@ -73,14 +73,14 @@ const LostItemEntry = () => {
       brand: lostItem.brand,
       category: lostItem.category,
       location: lostItem.location,
-      username: storedUsername,   // 🔥 MUST BE HERE
+      username: storedUsername,   
       lostDate: ldate,
       status: false
     };
   
     saveLostItem(payload)
       .then(() => {
-        // alert("lost Item Submitted ✅");
+       
         navigate("/StudentMenu");
       })
       .catch(err => console.error(err));

@@ -14,7 +14,7 @@ const Footer = () => {
               </div>
 
               <div className="col-md-4 mb-2 text-center">
-                {/* <img src="/logo.png" alt="logo" style={{ width: "50px" }} /> */}
+               
                   <strong>I FOUND</strong>
                 <p className="mt-1 mb-0 small">© 2025 Lost and Found</p>
               </div>

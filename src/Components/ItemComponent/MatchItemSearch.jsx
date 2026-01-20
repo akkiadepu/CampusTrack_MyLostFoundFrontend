@@ -11,58 +11,6 @@ import Footer from '../HeaderComponents/Footer'
 import AdminHeader from '../HeaderComponents/AdminHeader'
 
 
-// const MatchItemSearch = () => {
-
-
-//     let navigate = useNavigate();
-//     const param = useParams();
-
-//     const [lostItem, setLostItem] = useState({
-
-//         lostItemId: "",
-//         lostItemName: "",
-//         color: "",
-//         brand: "",
-//         category: "",
-//         location: "",
-//         username: "",
-//         lostDate: "",
-//         status: false,
-
-//     });
-
-//     const [foundItemDTOList, setfoundItemDTOList] = useState([]);
-
-//     const showFoundItems = () => {
-//         getLostItemById(param.pid).then((response) => {
-//             setLostItem(response.data);
-//         });
-//         getFoundItemByLostItem(param.pid).then((response) => {
-//             setfoundItemDTOList(response.data);
-//         });
-//     }
-
-//     useEffect(() => {
-//         showFoundItems();
-//     }, []);
-
-//     const returnBack = () => {
-//         navigate('/lost-report')
-//     }
-
-
-
-//     return (
-
-//         <div>
-//             MatchItemSearch
-
-//         </div>
-//     )
-// }
-
-// export default MatchItemSearch
-
 
 const MatchItemSearch = () => {
   const { pid } = useParams();
@@ -76,68 +24,7 @@ const MatchItemSearch = () => {
     loadData();
   }, []);
 
-  // const normalize = (str) => str?.trim().toLowerCase();
-  //   const loadData = async () => {
-  //     // const lostRes = await getLostItemById(pid);
-  //     // const foundRes = await getAllFoundItems();
-
-  //     // setLostItem(lostRes.data);
-  //      const lostRes = await getLostItemById(pid);
-  //   const matchRes = await getMatchedFoundItems(pid);
-
-  //   setLostItem(lostRes.data);
-  //   setMatchedFoundItems(matchRes.data);
-
-  //     // 🔍 FRONTEND MATCHING LOGIC
-  //     // const matches = foundRes.data.filter(found =>
-  //     //   found.category === lostRes.data.category &&
-  //     //   found.itemName?.toLowerCase() === lostRes.data.lostItemName?.toLowerCase() &&
-  //     //   !found.status
-  //     // );
-
-  //     console.log("LOST ITEM:", lostRes.data);
-  // console.log("FOUND ITEMS:", foundRes.data);
-
-  //     // const normalize = (str) => str?.trim().toLowerCase();
-
-
-  // // const matches = foundRes.data.filter(found =>
-  // //   normalize(found.category) === normalize(lostRes.data.category) &&
-  // //   normalize(found.itemName || found.foundItemName)
-  // //     .includes(normalize(lostRes.data.lostItemName)) &&
-  // //   found.status === false
-
-  // // );
-  //     // setMatchedFoundItems(matches);
-
-  //     const matches = foundRes.data.filter(found => {
-  //     let matchCount = 0;
-
-  //     if (
-  //       normalize(found.itemName || found.foundItemName)
-  //         ?.includes(normalize(lostRes.data.lostItemName))
-  //     ) matchCount++;
-
-  //     if (normalize(found.category) === normalize(lostRes.data.category))
-  //       matchCount++;
-
-  //     if (normalize(found.color) === normalize(lostRes.data.color))
-  //       matchCount++;
-
-  //     if (normalize(found.brand) === normalize(lostRes.data.brand))
-  //       matchCount++;
-
-  //     if (normalize(found.location) === normalize(lostRes.data.location))
-  //       matchCount++;
-
-  //     return matchCount >= 3 && found.status === false;
-  //   });
-
-  //   console.log("SMART MATCH RESULTS:", matches);
-  //   setMatchedFoundItems(matches);
-
-
-  //   };
+ 
 
   const loadData = async () => {
     try {

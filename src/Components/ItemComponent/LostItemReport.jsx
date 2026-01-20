@@ -145,32 +145,9 @@ const LostItemReport = () => {
                   </small>
                 </div>
 
-                {/* <div className="text-end mt-3">
-                  <button className="btn btn-primary btn-sm px-3">
-                    Contact
-                  </button>
-                </div> */}
 
                 <div className="text-end mt-3">
-                  {/* <button
-                    className="btn btn-warning btn-sm me-2"
-                    onClick={() => navigate(`/match-search/${item.lostItemId}`)}
-                  >
-                    Search
-                  </button> */}
-                  {/* {!item.status && (
-                    <button
-                      className="btn btn-warning btn-sm me-2"
-                      onClick={() => navigate(`/match-search/${item.lostItemId}`)}
-                    >
-                      Search
-                    </button>
-                  )}
-
-                  <button className="btn btn-primary btn-sm px-3">
-                    Contact
-                  </button> */}
-
+                  
                   {role === "Student" && (
                     <>
                       {!item.status && (

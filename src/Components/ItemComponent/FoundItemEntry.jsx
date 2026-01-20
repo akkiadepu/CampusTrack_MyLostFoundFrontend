@@ -158,14 +158,13 @@ const FoundItemEntry = () => {
       brand: foundItem.brand,
       category: foundItem.category,
       location: foundItem.location,
-      username: storedUsername,   // 🔥 MUST BE HERE
+      username: storedUsername,   
       foundDate: fdate,
       status: false
     };
 
     saveFoundItem(payload)
       .then(() => {
-        // alert("Found Item Submitted ✅");
         navigate("/StudentMenu");
       })
       .catch(err => console.error(err));

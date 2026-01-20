@@ -22,17 +22,16 @@ const ChatMessage = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true)
 
-    // Save messages to localStorage whenever they change
+   
     useEffect(() => {
         localStorage.setItem("chatMessages", JSON.stringify(messages));
     }, [messages]);
 
-    // Fetch user details once
+   
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
-                // const response = await getUserDetails();
-                // const user = response.data?.username || response.data?.name || response.data;
+                
                 const user = sessionStorage.getItem("username");
                 if (user) {
                     setUsername(user);
